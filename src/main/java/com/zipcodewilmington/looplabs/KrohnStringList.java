@@ -4,7 +4,7 @@ public class KrohnStringList {
 
     private String[] krohnList;
 
-    public KrohnIntList(String[] krohnList) {
+    public KrohnStringList(String[] krohnList) {
         this.krohnList = krohnList;
     }
 
@@ -17,14 +17,14 @@ public class KrohnStringList {
         return krohnList.length;
     }
 
-    public Integer[] toArray(){
+    public String[] toArray(){
 
         return krohnList;
     }
 
     public void removeAtIndex(Integer index){
 
-        Integer[] newKrohnList = new Integer[krohnList.length-1];
+        String[] newKrohnList = new String[krohnList.length-1];
         int j = 0;
         for (int i = 0; i < krohnList.length; i++) {
 
@@ -42,44 +42,33 @@ public class KrohnStringList {
 
     }
 
-    public void removeSpecific(Integer numberToRemove){
+    public void removeSpecific(String stringToRemove){
         for (int i = 0; i < krohnList.length; i++) {
-            if(krohnList[i] == numberToRemove){
+            if(krohnList[i].equals(stringToRemove)){
                 removeAtIndex(i);
                 break;
             }
         }
     }
 
-    public Integer occurrences(Integer numberToCount) {
+    public Integer occurrences(String stringToCount) {
         Integer counter = 0;
-        for(Integer thisInt : krohnList){
-            if(numberToCount == thisInt){
+        for(String thisString : krohnList){
+            if(stringToCount.equals(thisString)){
                 counter++;
             }
         }
         return  counter;
     }
 
-    public void removeAllButOne(Integer indexToRemove) {
-        int counter = 0;
-        for (int i = 0; i < krohnList.length; i++) {
 
-            if(krohnList[i] == indexToRemove){
-                counter++;
-            }
-            if(counter > 1 && krohnList[i] == indexToRemove){
-                removeAtIndex(i);
-                i--;
-            }
-        }
 
-    }
 
-    public void removeAll(Integer numberToRemove){
-        for(Integer thisInt : krohnList){
-            if(thisInt == numberToRemove){
-                removeSpecific(thisInt);
+
+    public void removeAll(String stringToRemove){
+        for(String thisString : krohnList){
+            if(thisString == stringToRemove){
+                removeSpecific(thisString);
             }
         }
     }

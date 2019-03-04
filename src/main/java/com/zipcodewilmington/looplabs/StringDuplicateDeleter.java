@@ -5,17 +5,34 @@ package com.zipcodewilmington.looplabs;
  * @ATTENTION_TO_STUDENTS You are forbidden from modifying the signature of this class.
  */
 public final class StringDuplicateDeleter extends DuplicateDeleter<String> {
-    public StringDuplicateDeleter(String[] array) {
-        super(array);
+    private String[] stringArray;
+    public StringDuplicateDeleter(String[] stringArray) {
+        super(stringArray);
+        this.stringArray = super.array;
     }
 
     @Override
     public String[] removeDuplicates(int maxNumberOfDuplications) {
-        return new String[0];
+        KrohnStringList krohnStringList = new KrohnStringList(stringArray);
+
+        for (int i = 0; i < krohnStringList.length(); i++) {
+            if (krohnStringList.occurrences(krohnStringList.get(i)) >= maxNumberOfDuplications) {
+                krohnStringList.removeAll(krohnStringList.get(i));
+                i=-1;
+            }
+        }
+        return krohnStringList.toArray();
     }
 
     @Override
     public String[] removeDuplicatesExactly(int exactNumberOfDuplications) {
-        return new String[0];
+        KrohnStringList krohnStringList = new KrohnStringList(stringArray);
+        for (int i = 0; i < krohnStringList.length(); i++) {
+            if (krohnStringList.occurrences(krohnStringList.get(i)) == exactNumberOfDuplications) {
+                krohnStringList.removeAll(krohnStringList.get(i));
+                i=0;
+            }
+        }
+        return krohnStringList.toArray();
     }
 }
