@@ -6,8 +6,8 @@ package com.zipcodewilmington.looplabs;
 public abstract class DuplicateDeleter<T> implements DuplicateDeleterInterface<T> {
     protected T[] array;
 
-    public DuplicateDeleter(T[] intArray) {
-        this.array = intArray;
+    public DuplicateDeleter(T[] array) {
+        this.array = array;
     }
 
     abstract public T[] removeDuplicates(int maxNumberOfDuplications);
